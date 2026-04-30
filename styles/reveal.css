@@ -1,0 +1,20 @@
+.reveal-stage {
+  min-height: 100dvh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 61, 139, 0.18), transparent 34rem),
+    radial-gradient(circle at 80% 80%, rgba(49, 215, 255, 0.12), transparent 28rem),
+    var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
