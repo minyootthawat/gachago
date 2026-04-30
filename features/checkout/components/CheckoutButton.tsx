@@ -3,12 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { addDemoCheckout } from "@/features/demo/local-state";
 
 type CheckoutButtonProps = {
   productId: string;
+  productName: string;
+  priceSatang: number;
 };
 
-export function CheckoutButton({ productId }: CheckoutButtonProps) {
+export function CheckoutButton({ productId, productName, priceSatang }: CheckoutButtonProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +33,14 @@ export function CheckoutButton({ productId }: CheckoutButtonProps) {
         throw new Error("Checkout failed");
       }
 
-      const session = (await response.json()) as { userPackId: string };
+      const session = (await response.json()) as { orderId: string; userPackId: string };
+      addDemoCheckout({
+        orderId: session.orderId,
+        userPackId: session.userPackId,
+        productId,
+        productName,
+        totalSatang: priceSatang
+      });
       router.push(`/reveal/${session.userPackId}`);
     } catch (checkoutError) {
       setError(checkoutError instanceof Error ? checkoutError.message : "Checkout failed");
@@ -48,4 +58,3 @@ export function CheckoutButton({ productId }: CheckoutButtonProps) {
     </div>
   );
 }
-

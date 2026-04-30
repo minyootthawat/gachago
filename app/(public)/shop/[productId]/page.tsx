@@ -21,13 +21,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   return (
     <PageShell>
-      <section className="mx-auto grid max-w-6xl gap-8 px-4 py-12 lg:grid-cols-[1fr_420px]">
+      <section className="page-container grid gap-6 py-8 md:grid-cols-[minmax(0,1fr)_340px] md:items-start lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-8 lg:py-12">
         <div>
           <div className="aspect-[4/3] rounded-lg border border-[var(--color-border)] bg-[radial-gradient(circle_at_50%_35%,rgba(255,61,139,0.3),transparent_48%),var(--color-surface)]" />
         </div>
-        <aside>
+        <aside className="md:sticky md:top-6">
           <p className="text-sm text-[var(--color-text-muted)]">{product.sku}</p>
-          <h1 className="mt-2 font-display text-3xl font-bold">{product.name}</h1>
+          <h1 className="mt-2 font-display text-3xl font-bold lg:text-4xl">{product.name}</h1>
           <p className="mt-4 leading-7 text-[var(--color-text-muted)]">{product.description}</p>
           <div className="mt-6 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
             <div className="flex items-center justify-between">
@@ -37,12 +37,16 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </strong>
             </div>
             <div className="mt-4">
-              <CheckoutButton productId={product.id} />
+              <CheckoutButton
+                priceSatang={product.priceSatang}
+                productId={product.id}
+                productName={product.name}
+              />
             </div>
           </div>
         </aside>
       </section>
-      <section className="mx-auto max-w-6xl px-4 pb-16">
+      <section className="page-container pb-16">
         <h2 className="font-display text-2xl font-semibold">Reward pool and odds</h2>
         <p className="mt-2 text-sm text-[var(--color-text-muted)]">
           Display final odds only after legal and inventory review.

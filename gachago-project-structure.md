@@ -388,6 +388,7 @@ public/
 ```text
 styles/
 ├── tokens.css
+├── responsive.css
 ├── reveal.css
 └── admin.css
 ```
@@ -407,6 +408,32 @@ styles/
 --duration-reveal-fast
 --duration-reveal-normal
 ```
+
+### Responsive Tokens
+
+```text
+--breakpoint-mobile-s: 320px
+--breakpoint-mobile-m: 375px
+--breakpoint-tablet: 768px
+--breakpoint-desktop: 1024px
+--breakpoint-wide: 1440px
+--container-page: 1120px
+--container-wide: 1280px
+--container-reveal-mobile: 430px
+--container-reveal-tablet: 520px
+```
+
+### Responsive Component Rules
+
+| Component | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| ProductGrid | 1 column | 2 columns | 3 columns + filters |
+| ProductDetail | stacked | 2 columns | media/reward left, purchase/odds right |
+| RevealStage | full-screen 9:16 | centered 9:16 | phone-frame or split with details |
+| CollectionGrid | 2 columns | 3-4 columns | dense grid + sidebar filters |
+| AdminTables | read-only/minimal | usable | primary layout |
+
+Reveal-specific rule: keep the reveal stage in a stable phone-like aspect ratio on tablet/desktop. Do not stretch the pack/card to fill wide screens.
 
 ---
 
@@ -440,10 +467,12 @@ tests/
 ├── e2e/
 │   ├── purchase-and-open.spec.ts
 │   ├── collection.spec.ts
-│   └── admin-fulfillment.spec.ts
+│   ├── admin-fulfillment.spec.ts
+│   └── responsive.spec.ts
 └── fixtures/
     ├── products.ts
-    └── rewards.ts
+    ├── rewards.ts
+    └── viewports.ts
 ```
 
 ### MVP Test Priorities
@@ -455,6 +484,8 @@ tests/
 5. result ถูกบันทึกก่อน animation แสดง
 6. collection เพิ่ม quantity ถูกต้อง
 7. admin ไม่สามารถเข้าด้วย user ปกติ
+8. reveal/shop/product ไม่ overflow ใน 360, 390, 430, 768, 1024, 1280, 1440 widths
+9. desktop reveal ไม่ถูก stretch เกิน phone-frame/container ที่กำหนด
 
 ---
 
@@ -546,5 +577,6 @@ app/page.tsx -> direct SQL-heavy logic
 7. Implement mock payment provider first
 8. Implement gacha engine with tests
 9. Implement reveal animation V1
-10. Replace mock payment with real sandbox provider
-
+10. Add responsive shop/product/reveal layouts
+11. Verify mobile, tablet, desktop viewports
+12. Replace mock payment with real sandbox provider

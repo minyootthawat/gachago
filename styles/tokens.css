@@ -18,5 +18,13 @@
   --radius-lg: 12px;
   --duration-reveal-fast: 160ms;
   --duration-reveal-normal: 420ms;
+  --breakpoint-mobile-s: 320px;
+  --breakpoint-mobile-m: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+  --container-page: 1120px;
+  --container-wide: 1280px;
+  --container-reveal-mobile: 430px;
+  --container-reveal-tablet: 520px;
 }
-

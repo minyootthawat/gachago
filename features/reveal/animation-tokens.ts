@@ -7,6 +7,13 @@ export const rarityColors: Record<Rarity, string> = {
   secret: "var(--color-rarity-secret)"
 };
 
+export const rarityLabels: Record<Rarity, string> = {
+  common: "COMMON",
+  rare: "RARE",
+  super_rare: "SUPER RARE",
+  secret: "SECRET"
+};
+
 export const revealTimeline = {
   introMs: 800,
   shakeMs: 1000,
@@ -14,4 +21,3 @@ export const revealTimeline = {
   silhouetteMs: 1200,
   finalMs: 1300
 };
-

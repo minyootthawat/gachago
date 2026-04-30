@@ -7,9 +7,9 @@ export default async function ShopPage() {
 
   return (
     <PageShell>
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="page-container py-8 sm:py-10 lg:py-12">
         <div className="max-w-2xl">
-          <h1 className="font-display text-4xl font-bold tracking-normal">
+          <h1 className="font-display text-3xl font-bold tracking-normal sm:text-4xl lg:text-5xl">
             Open anime boxes with cinematic reveals.
           </h1>
           <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">
@@ -24,4 +24,3 @@ export default async function ShopPage() {
     </PageShell>
   );
 }
-

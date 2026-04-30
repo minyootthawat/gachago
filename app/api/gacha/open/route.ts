@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { demoRewards } from "@/features/demo/data";
 import { openPack } from "@/features/gacha/engine/open-pack";
 
 export async function POST(request: NextRequest) {
@@ -18,18 +19,7 @@ export async function POST(request: NextRequest) {
       userId: "dev-user",
       clientSeed: body.clientSeed
     },
-    [
-      { id: "reward-common-1", name: "Silver Mascot Card", rarity: "common", weight: 70, stock: 100 },
-      { id: "reward-rare-1", name: "Blue Aura Card", rarity: "rare", weight: 24, stock: 40 },
-      {
-        id: "reward-super-rare-1",
-        name: "Magenta Burst Card",
-        rarity: "super_rare",
-        weight: 5,
-        stock: 12
-      },
-      { id: "reward-secret-1", name: "Secret Gold Prototype", rarity: "secret", weight: 1, stock: 2 }
-    ]
+    demoRewards
   );
 
   return NextResponse.json(result);
